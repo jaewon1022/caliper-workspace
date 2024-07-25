@@ -1,0 +1,23 @@
+name: Caliper Test
+version: "2.0.0"
+
+caliper:
+  blockchain: fabric
+
+channels:
+  - name: channel1
+    contracts:
+      - id: chaincode-go
+
+organizations:
+  - mspid: peer-msp
+    identities:
+      certificates:
+        - name: "peer-certificate"
+          clientPrivateKey:
+            path: /opt/gopath/src/caliper-workspace/peer-client.key
+          clientSignedCert:
+            path: /opt/gopath/src/caliper-workspace/peer-client.pem
+    connectionProfile:
+      path: /opt/gopath/src/caliper-workspace/connection_property_peer-msp.json
+      discover: true
