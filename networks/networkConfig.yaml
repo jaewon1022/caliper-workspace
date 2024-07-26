@@ -5,7 +5,7 @@ caliper:
   blockchain: fabric
 
 channels:
-  - name: channel1
+  - channelName: channel1
     contracts:
       - id: chaincode-go
 
@@ -13,11 +13,10 @@ organizations:
   - mspid: peer-msp
     identities:
       certificates:
-        - name: "peer-certificate"
+        - name: "user1"
           clientPrivateKey:
             path: /opt/gopath/src/caliper-workspace/peer-client.key
           clientSignedCert:
             path: /opt/gopath/src/caliper-workspace/peer-client.pem
     connectionProfile:
       path: /opt/gopath/src/caliper-workspace/connection_property_peer-msp.json
-      discover: true
