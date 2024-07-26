@@ -9,12 +9,11 @@ caliper-workspace/
 ├── connection_property_peer-msp.json
 ├── networks
 │   └── networkConfig.yaml
-├── node_modules
-│   └── // ... many of modules
 ├── package.json
 ├── package-lock.json
 ├── peer-client.key
 ├── peer-client.pem
+├── README.md
 └── workloads
     ├── read.js
     └── write.js
