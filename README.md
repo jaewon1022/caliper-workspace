@@ -1,6 +1,5 @@
 # This workspace is using Caliper Verison 0.6.0 and Fabric Verison 1.4
 
-workspace tree
 ```
 caliper-workspace/
 ├── benchmarks
