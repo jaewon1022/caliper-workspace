@@ -8,4 +8,4 @@
 
 [Workload](https://hyperledger.github.io/caliper/v0.6.0/workload-module/)
 
-[Benchmark](https://hyperledger.github.io/caliper/v0.6.0/workload-module/)
+[Benchmark](https://hyperledger.github.io/caliper/v0.6.0/bench-config/)
