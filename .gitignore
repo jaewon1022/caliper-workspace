@@ -1,5 +1,7 @@
 peer-client.key
 peer-client.pem
+user1.key
+user1.pem
 connection_property_peer-msp.json
 node_modules
 caliper.log
