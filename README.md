@@ -1,21 +1,30 @@
-# This workspace is using Caliper Verison 0.6.0 and Fabric Verison 1.4
+# TPS Testing workspace with Caliper
+##### Caliper verison 0.6.0 
+##### Fabric verison 1.4
+##### node version : 10.24.1
+##### npm version : 6.14.12
 
 ```
 caliper-workspace/
 ├── benchmarks
 │   └── myAssetBenchmark.yaml
-├── caliper.log
-├── connection_property_peer-msp.json
 ├── networks
 │   └── networkConfig.yaml
-├── package.json
+├── node_modules
+│   └── // ...
+├── workloads
+│   ├── read.js
+│   └── write.js
+├── .gitignore
+├── connection_property_peer-msp.json
 ├── package-lock.json
+├── package.json
 ├── peer-client.key
 ├── peer-client.pem
 ├── README.md
-└── workloads
-    ├── read.js
-    └── write.js
+├── report.html
+├── user1.key
+└── user1.pem
 ```
 
 ### Easiest Caliper examples
