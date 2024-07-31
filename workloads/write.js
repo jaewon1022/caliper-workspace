@@ -26,11 +26,16 @@ class WriteWorkload extends WorkloadModuleBase {
     );
 
     for (let i = 1; i <= this.roundArguments.assets; i++) {
+      const assetId = `${this.workerIndex}-${i}`;
+      console.log(
+        `Creating asset "${this.workerIndex}-${i}" by workerNode ${workerIndex}`
+      );
+
       let txArgs = {
-        contractId: "chaincode-go",
-        contractFunction: "Invoke",
+        contractId: this.roundArguments.contractId,
+        contractFunction: "createAsset",
         invokerIdentity: "user1",
-        contractArguments: ["createAsset", `product-${i}`, "100", "10000"],
+        contractArguments: [assetId, "100", "10000"],
         readOnly: false,
       };
 
@@ -43,10 +48,10 @@ class WriteWorkload extends WorkloadModuleBase {
     const randomId = Math.floor(Math.random() * this.roundArguments.assets) + 1;
 
     let txArgs = {
-      contractId: "chaincode-go",
-      contractFunction: "Invoke",
+      contractId: this.roundArguments.contractId,
+      contractFunction: "updateAsset",
       invokerIdentity: "user1",
-      contractArguments: ["deleteAsset", `product-${randomId}`],
+      contractArguments: [`${this.workerIndex}-${randomId}`, "50", "20000"],
       readOnly: false,
     };
 
@@ -56,12 +61,17 @@ class WriteWorkload extends WorkloadModuleBase {
   // cleanup after the workload is done
   async cleanupWorkloadModule() {
     for (let i = 1; i <= this.roundArguments.assets; i++) {
-      const assetId = `product-${i}`;
+      const assetId = `${this.workerIndex}-${i}`;
+
+      console.log(
+        `Deleting asset "${assetId}" by workerNode ${this.workerIndex}`
+      );
+
       let txArgs = {
-        contractId: "chaincode-go",
-        contractFunction: "Invoke",
+        contractId: this.roundArguments.contractId,
+        contractFunction: "deleteAsset",
         invokerIdentity: "user1",
-        contractArguments: ["deleteAsset", assetId],
+        contractArguments: [assetId],
         readOnly: false,
       };
 

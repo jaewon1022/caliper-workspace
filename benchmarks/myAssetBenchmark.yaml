@@ -16,14 +16,14 @@ test:
           assets: 10
           contractId: chaincode-go
 
-    # - label: Write Transaction
-    #   txDuration: 30
-    #   rateControl:
-    #     type: fixed-rate # opts의 tps에 적힌 양만큼 고정된 비율로 매 초 요청을 전송함. 안정성을 확인하기 위해서는 fixed-load 를 사용.
-    #     opts:
-    #       tps: 300
-    #   workload:
-    #     module: /opt/gopath/src/caliper-workspace/workloads/write.js
-    #     arguments:
-    #       assets: 100
-    #       contractId: chaincode-go
+    - label: Write Transaction
+      txDuration: 30
+      rateControl:
+        type: fixed-rate # opts의 tps에 적힌 양만큼 고정된 비율로 매 초 요청을 전송함. 안정성을 확인하기 위해서는 fixed-load 를 사용.
+        opts:
+          tps: 300
+      workload:
+        module: /opt/gopath/src/caliper-workspace/workloads/write.js
+        arguments:
+          assets: 10
+          contractId: chaincode-go
