@@ -1,7 +1,7 @@
 test:
   name: benchmarking chaincode-go
   workers:
-    number: 2
+    number: 1
 
   rounds:
     - label: Read Transaction
