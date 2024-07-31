@@ -15,9 +15,9 @@ organizations:
       certificates:
         - name: "user1"
           clientPrivateKey:
-            path: /opt/gopath/src/caliper-workspace/user1.key
+            path: /opt/gopath/src/caliper-workspace/generated/user.key
           clientSignedCert:
-            path: /opt/gopath/src/caliper-workspace/user1.pem
+            path: /opt/gopath/src/caliper-workspace/generated/user.pem
     connectionProfile:
       path: /opt/gopath/src/caliper-workspace/connection_property_peer-msp.json
       discover: false
