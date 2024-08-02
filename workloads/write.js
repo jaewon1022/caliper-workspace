@@ -47,11 +47,26 @@ class WriteWorkload extends WorkloadModuleBase {
   async submitTransaction() {
     const randomId = Math.floor(Math.random() * this.roundArguments.assets) + 1;
 
+    const assetSet = [
+      { price: "10", totalStock: "100000" },
+      { price: "20", totalStock: "50000" },
+      { price: "40", totalStock: "25000" },
+      { price: "50", totalStock: "20000" },
+      { price: "100", totalStock: "10000" },
+      { price: "200", totalStock: "5000" },
+    ];
+
+    const randomAsset = assetSet[Math.floor(Math.random() * assetSet.length)];
+
     let txArgs = {
       contractId: this.roundArguments.contractId,
       contractFunction: "updateAsset",
       invokerIdentity: "user1",
-      contractArguments: [`${this.workerIndex}-${randomId}`, "50", "20000"],
+      contractArguments: [
+        `${this.workerIndex}-${randomId}`,
+        randomAsset.price,
+        randomAsset.totalStock,
+      ],
       readOnly: false,
     };
 
