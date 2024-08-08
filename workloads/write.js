@@ -35,7 +35,7 @@ class WriteWorkload extends WorkloadModuleBase {
         contractId: this.roundArguments.contractId,
         contractFunction: "createAsset",
         invokerIdentity: "user1",
-        contractArguments: [assetId, "100", "10000", "1"],
+        contractArguments: [assetId, "100", "10000"],
         readOnly: false,
       };
 
@@ -61,43 +61,15 @@ class WriteWorkload extends WorkloadModuleBase {
     // 현재 버전을 가져오기 위해 자산 상태 조회
     let assetId = `${this.workerIndex}-${randomId}`;
 
-    let queryArgs = {
+    let txArgs = {
       contractId: this.roundArguments.contractId,
-      contractFunction: "queryAsset",
+      contractFunction: "updateAsset",
       invokerIdentity: "user1",
-      contractArguments: [assetId],
-      readOnly: true,
+      contractArguments: [assetId, randomAsset.price, randomAsset.totalStock],
+      readOnly: false,
     };
 
-    let assetResponse = await this.sutAdapter.sendRequests(queryArgs);
-
-    const assetBuffer = assetResponse.GetResult();
-
-    if (assetBuffer) {
-      // assetBuffer is buffer data. convert to string
-      const asset = JSON.parse(assetBuffer.toString());
-
-      const { version } = asset;
-
-      let txArgs = {
-        contractId: this.roundArguments.contractId,
-        contractFunction: "updateAsset",
-        invokerIdentity: "user1",
-        contractArguments: [
-          assetId,
-          randomAsset.price,
-          randomAsset.totalStock,
-          version.toString(),
-        ],
-        readOnly: false,
-      };
-
-      return this.sutAdapter.sendRequests(txArgs);
-    } else {
-      console.log(
-        `Failed to get asset "${assetId}" by workerNode ${this.workerIndex}`
-      );
-    }
+    return this.sutAdapter.sendRequests(txArgs);
   }
 
   // cleanup after the workload is done
